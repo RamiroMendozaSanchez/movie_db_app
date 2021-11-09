@@ -10,6 +10,7 @@ import 'package:movie_db_app/src/bloc/seriedetailbloc/serie_detail_event.dart';
 import 'package:movie_db_app/src/bloc/seriedetailbloc/serie_detail_state.dart';
 import 'package:movie_db_app/src/model/serie.dart';
 import 'package:movie_db_app/src/model/serieDetail.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class MovieDetailScreen extends StatelessWidget {
   final Serie serie;
@@ -78,6 +79,10 @@ class MovieDetailScreen extends StatelessWidget {
                     padding: EdgeInsets.only(top: 120),
                     child: GestureDetector(
                       onTap: () {
+                        WebView(
+                          initialUrl:serieDetails.siteDetailUrl,
+                          javascriptMode:JavascriptMode.unrestricted,
+                        );
                       },
                       child: Center(
                         child: Column(
@@ -229,7 +234,7 @@ class MovieDetailScreen extends StatelessWidget {
                           height: 10,
                         ),
                         Text(
-                          'Screenshots'.toUpperCase(),
+                          'Episodes'.toUpperCase(),
                           style: Theme.of(context).textTheme.caption.copyWith(
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'muli',
@@ -273,14 +278,6 @@ class MovieDetailScreen extends StatelessWidget {
                             },
                           ),
                         ),
-                        SizedBox(height: 10),
-                        Text(
-                          'Casts'.toUpperCase(),
-                          style: Theme.of(context).textTheme.caption.copyWith(
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'muli',
-                              ),
-                        ),
                       ],
                     ),
                   ),
@@ -295,4 +292,3 @@ class MovieDetailScreen extends StatelessWidget {
     );
   }
 }
-
